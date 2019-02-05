@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#SBATCH --job-name=hkrm_ade
-#SBATCH -o gypsum/logs/%j_hkrm_ade.txt 
-#SBATCH -e gypsum/errs/%j_hkrm_ade.txt
+#SBATCH --job-name=spat_ade
+#SBATCH -o gypsum/logs/%j_spat_ade.txt 
+#SBATCH -e gypsum/errs/%j_spat_ade.txt
 #SBATCH -p 1080ti-long
 #SBATCH --gres=gpu:4
 #SBATCH --mem=100000
@@ -10,11 +10,12 @@
 
 
 
-# Recreate HKRM training on ADE20k
+# Recreate Spatial training on ADE20k
 
 
 DATASET=ade
-NET=HKRM
+# set net to Attribute, Relation, Spatial or HKRM
+NET=Relation
 EXP_NAME=$DATASET"_"$NET
 
 mkdir Outputs/$EXP_NAME
